@@ -282,8 +282,116 @@ initQuran();
 updateQuranProgress();
 </script>
 
+      <div id="dailyDua" style="
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.5);
+display: none;
+align-items: center;
+justify-content: center;
+z-index: 9999;
+">
+
+  <div style="
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 340px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  ">
+
+    <h3 style="margin-bottom:12px; color:#3E1F47;">🌙 دعاء اليوم</h3>
+
+    <p id="duaText" style="color:#555; line-height:1.8;"></p>
+
+    <button onclick="closeDua()" style="
+    margin-top:16px;
+    padding:8px 16px;
+    border:none;
+    border-radius:8px;
+    background:#C5A059;
+    color:white;
+    cursor:pointer;
+    ">
+    آمين 🤍
+    </button>
+
+  </div>
+</div>
+
+   <script>
+
+const duas = [
+"اللهم أعنّي على ذكرك وشكرك وحسن عبادتك",
+"اللهم تقبّل مني صيامي وقيامي",
+"يا رب اجعل هذا اليوم مليئًا بالبركة والسكينة",
+"اللهم اغفر لي ولوالدي وللمؤمنين",
+"يا رب ارزقني الإخلاص في القول والعمل",
+"اللهم اجعل القرآن ربيع قلبي",
+"يا رب اجعلني من المقبولين في هذا الشهر",
+"اللهم اكتب لي أجر كل طاعة",
+"يا رب أصلح قلبي ونيتي",
+"اللهم اجعلني من عبادك الصالحين",
+    "اللهم بلّغني رمضان وأعنّي فيه على الصيام والقيام وغضّ البصر وحفظ اللسان",
+"اللهم اجعلني فيه من عبادك الصالحين المقبولين",
+"يا رب ارزقني الإخلاص في النية والعمل",
+"اللهم اجعل القرآن ربيع قلبي ونور صدري",
+"يا رب اغفر لي ما تقدم من ذنبي وما تأخر",
+"اللهم طهّر قلبي من النفاق وعملي من الرياء",
+"يا رب ارزقني لذة الطاعة وحلاوة القرب منك",
+"اللهم اجعلني من أهل الذكر والشكر",
+"يا رب أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين",
+"اللهم ارزقني قلبًا خاشعًا ولسانًا ذاكرًا",
+"يا رب اجعلني من عتقائك من النار",
+"اللهم تقبّل مني الصيام والقيام وصالح الأعمال",
+"يا رب ارزقني حسن الخاتمة",
+"اللهم اجعلني من الذين نظرت إليهم فرحمتهم",
+"يا رب اكتب لي نصيبًا من كل خير تنزله في هذا الشهر",
+"اللهم اجعلني من المقبولين الفائزين",
+"يا رب اغفر لي ولوالدي ولمن أحب",
+"اللهم وسّع صدري وطمئن قلبي",
+"يا رب اجعلني سببًا للخير أينما كنت",
+"اللهم ارزقني بركة الوقت والعمل",
+"يا رب استجب دعائي ولو بعد حين",
+"اللهم اجعلني من أهل الجنة بلا حساب",
+"يا رب لا تحرمني لذة مناجاتك",
+"اللهم اكتب لي أجر كل طاعة ولو قصّرت",
+"يا رب اجعلني من الصابرين الشاكرين",
+"اللهم أصلح لي ديني ودنياي وآخرتي",
+"يا رب اجعلني من الذين يُقال لهم ادخلوا الجنة بسلام",
+"اللهم اجعلني ممن رضيت عنهم ورضوا عنك",
+"يا رب تقبّل مني القليل وبارك لي فيه",
+"اللهم لا تخرجني من رمضان إلا وقد غفرت لي ورضيت عني"
+];
+
+function showDailyDua() {
+
+  const today = new Date().toDateString();
+  const lastShown = localStorage.getItem("duaDate");
+
+  if (lastShown === today) return;
+
+  const randomDua = duas[Math.floor(Math.random() * duas.length)];
+  document.getElementById("duaText").innerText = randomDua;
+
+  document.getElementById("dailyDua").style.display = "flex";
+
+  localStorage.setItem("duaDate", today);
+}
+
+function closeDua() {
+  document.getElementById("dailyDua").style.display = "none";
+}
+
+// تشغيل عند فتح الصفحة
+showDailyDua();
+
+</script>
+
 </body>
 </html>
+
 
 
 
